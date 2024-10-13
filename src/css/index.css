@@ -1,0 +1,50 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+    --colorRed: rgb(247, 97, 97)
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    background-color: rgb(247, 97, 97);
+    width: min(1500px, 100vw);
+    display: flex;
+
+    main {
+        width: 75%;
+    }
+
+    aside {
+        width: 25%;
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        main {
+            width: 100%;
+        }
+
+        aside {
+            width: 100%;
+            margin-top: 30px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        height: 100vh;
+    }
+}
