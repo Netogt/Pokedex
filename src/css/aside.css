@@ -19,7 +19,6 @@
 
 .itemListPokemon {
     height: 170px;
-    background-color: rgb(248, 99, 99);
     padding: 0 10px;
     display: flex;
     justify-content: space-evenly;
@@ -29,9 +28,19 @@
     margin-bottom: 20px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     cursor: pointer;
+    position: relative;
 
-    &:hover{
+    &:hover {
         opacity: 0.8;
+    }
+
+    .cardSelected {
+        position: absolute;
+        width: 100%;
+        height: 170px;
+        border-radius: inherit;
+        border-bottom: 6px solid rgba(39, 39, 39, 0.74);
+        margin: 0 auto;
     }
 }
 
@@ -99,16 +108,21 @@
     aspect-ratio: 1;
     border-radius: 50%;
     background: #25b09b;
-    --_m: 
-      conic-gradient(#0000 10%,#000),
-      linear-gradient(#000 0 0) content-box;
+    --_m:
+        conic-gradient(#0000 10%, #000),
+        linear-gradient(#000 0 0) content-box;
     -webkit-mask: var(--_m);
-            mask: var(--_m);
+    mask: var(--_m);
     -webkit-mask-composite: source-out;
-            mask-composite: subtract;
+    mask-composite: subtract;
     animation: l3 1s infinite linear;
-  }
-  @keyframes l3 {to{transform: rotate(1turn)}}
+}
+
+@keyframes l3 {
+    to {
+        transform: rotate(1turn)
+    }
+}
 
 @media (max-width: 1024px) {
     .listPokemonsAside {
