@@ -21,16 +21,14 @@ interface ItemListPokemonProps {
 export default function ItemListPokemon({ imgPoke, namePoke, typePoke, idPoke, click }: ItemListPokemonProps) {
     const [selected, setSelected] = useState(false)
     const {data} = usePokeContext()
+    
     useEffect(()=>{
-        
         if(data.id == idPoke){
             setSelected(true)
-            console.log("selecionou")
             return
         }
         if(selected){
             setSelected(false)
-            console.log("removeu")
         }
             
     }, [data])

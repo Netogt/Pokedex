@@ -3,6 +3,7 @@ import ListPokemons from './components/aside/ListPokemons.tsx';
 import MainSection from './components/main/MainSection.tsx';
 import { usePokeContext } from './context/pokeContext.tsx';
 import { colors } from './components/colorPokemon.ts';
+
 function App() {
   const { data } = usePokeContext()
   if (Object.entries(data).length == 0) return;

@@ -2,16 +2,11 @@ import ItemListPokemon from "./ItemListPokemon";
 import { usePokeContext } from '../../context/pokeContext';
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-interface objProps {
-    name: string,
-    types: [],
-    img: string,
-    id: number
-}
+import { listPokemonType } from "../../context/typeResponseApi";
 
 export default function ListPokemons() {
     const { setData } = usePokeContext()
-    const [list, setList] = useState<Array<objProps>>([])
+    const [list, setList] = useState<Array<listPokemonType>>([])
 
     function renderPokemons(start: number, end: number) {
         let allResponses = []
@@ -25,9 +20,9 @@ export default function ListPokemons() {
                     return {
                         name,
                         types,
-                        img: sprites['other']['official-artwork']['front_default'],
+                        sprites: sprites['other']['official-artwork']['front_default'],
                         id
-                    } as objProps;
+                    } as listPokemonType;
                 })
                 setList(previousList => [...previousList, ...responses])
             })
@@ -54,10 +49,10 @@ export default function ListPokemons() {
 
     return (
         <ul className="listPokemonsAside">
-            {list.map(({ name, types, img, id }, index) => <ItemListPokemon
+            {list.map(({ name, types, sprites, id }, index) => <ItemListPokemon
                 namePoke={name}
                 typePoke={types}
-                imgPoke={img}
+                imgPoke={sprites}
                 idPoke={id}
                 key={index}
                 click={() => { setData(`${id}`)}} />
