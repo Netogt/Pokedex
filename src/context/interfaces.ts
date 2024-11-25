@@ -58,6 +58,6 @@ export interface usePokemonReturn {
 }
 
 export interface contextProps {
-    data: pokemonType,
+    data: objResponseType,
     setData: (pokemon: string) => void
 }

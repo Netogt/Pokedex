@@ -1,9 +1,10 @@
 import PokemonInfo from "./PokemonInfo";
 import { usePokeContext } from '../../context/pokeContext';
+import { pokemonType } from "../../context/interfaces";
 export default function LeftSection() {
     const {data} = usePokeContext()
-    if(Object.entries(data).length == 0) return
-    const {height, weight, abilities, shape, generation} = data
+    if(data.response == null) return
+    const {height, weight, abilities, shape, generation} = data.response[0] as pokemonType
     return (
         <section className="leftSection">
             <h2>Information</h2>

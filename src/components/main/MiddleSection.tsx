@@ -1,18 +1,14 @@
 import TypePokemon from './TypePokemon';
 import LogoPokeball from './LogoPokeball';
 import { usePokeContext } from '../../context/pokeContext';
-interface namePokemonType{
-    name: string
-}
-interface typePokemon{
-    type: namePokemonType
-}
+
 
 export default function MiddleSection() {
     const { data } = usePokeContext()
 
-    if (Object.entries(data).length == 0) return
-    const {id, name, sprites, types} = data
+    if(data.response == null) return
+    const {id, name, sprites, types} = data.response[0]
+
     return (
         <section className='middleSection'>
             <div>
@@ -24,7 +20,7 @@ export default function MiddleSection() {
                 <LogoPokeball />
             </div>
             <div className="boxTypes">
-                {types.map(({type}: typePokemon, index: number) => 
+                {types.map(({type}, index: number) => 
                 <TypePokemon type={type['name']} key={index} />)}
             </div>
         </section>

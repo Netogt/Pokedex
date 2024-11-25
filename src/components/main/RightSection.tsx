@@ -1,9 +1,10 @@
 import PokemonInfo from './PokemonInfo';
 import { usePokeContext } from '../../context/pokeContext';
+import { pokemonType } from '../../context/interfaces';
 export default function RightSection() {
     const {data} = usePokeContext()
-    if(Object.entries(data).length == 0) return
-    const [hp, attack, defense, spAttack, spDefense, speed ] = data.stats
+    if(data.response == null) return
+    const [hp, attack, defense, spAttack, spDefense, speed ] =( data.response[0] as pokemonType).stats
     return (
         <section className='rightSection'>
             <h2>Status Base</h2>
