@@ -1,15 +1,11 @@
 import { useState } from "react"
 import axios from "axios";
-import { usePokemonReturn, usePokemonProps, ResponseApiType, listPokemonType, pokemonType, objResponseType } from "../context/typeResponseApi"
+import { usePokemonReturn, usePokemonProps, ResponseApiType, listPokemonType, pokemonType, objResponseType } from "../context/interfaces"
 
 const url: string = "https://pokeapi.co/api/v2/";
-const objResponse: objResponseType = {
-    response: null,
-    error: null
-}
 
 export default function usePokemon():usePokemonReturn {
-    const [data, setData] = useState<objResponseType>(objResponse)
+    const [data, setData] = useState<objResponseType>({} as objResponseType)
 
     async function getPokemon(pok: usePokemonProps) {
         const allUrl: string[] = getUrl(pok)
@@ -27,7 +23,7 @@ function getUrl({ type, fetch }: usePokemonProps): string[] {
             `${url}pokemon/${fetch.pokemon}`,
             `${url}pokemon-species/${fetch.pokemon}`
         ]
-    } {
+    } else {
         let start = fetch.listPokemon?.start;
         let end = fetch.listPokemon?.end;
         if (start && end) {
@@ -40,12 +36,11 @@ function getUrl({ type, fetch }: usePokemonProps): string[] {
 }
 
 async function fetchPokemon(type: string, requests: string[]): Promise<objResponseType> {
-    let allResponses: ResponseApiType = []
     try {
+        let allResponses: ResponseApiType = []
         const allRequests = await Promise.all(requests.map(request => axios.get(request))) as any[]
         if (type == "pokemon") { 
             allResponses = dataPoke((allRequests.map(res => res.data) as pokemonType[]))
-           
         } else {
             allResponses = dataListPoke((allRequests.map(res => res.data) as listPokemonType[]))
         }

@@ -2,7 +2,7 @@ import ItemListPokemon from "./ItemListPokemon";
 import { usePokeContext } from '../../context/pokeContext';
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { listPokemonType } from "../../context/typeResponseApi";
+import { listPokemonType } from "../../context/interfaces";
 
 export default function ListPokemons() {
     const { setData } = usePokeContext()
