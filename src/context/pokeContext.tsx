@@ -1,11 +1,11 @@
 import { createContext, useContext, ReactNode, useEffect, useState } from "react";
-import { contextProps } from "./interfaces";
-import usePokemon from "../hooks/usePokemon";
+import { contextProps, objResponseType } from "./interfaces";
+import usePokemon from "../hooks/useFetch";
 
 const context = createContext({} as contextProps);
 
 export function ContainerContext({ children }: { children: ReactNode }) {
-    const [pok, setPok] = useState()
+    const [objResponse, setObjResponse] = useState<objResponseType>()
     const {setPokemonDT } = usePokemon()
     function setData(pokemon: string | number): void {
         setPokemonDT({
@@ -14,8 +14,7 @@ export function ContainerContext({ children }: { children: ReactNode }) {
                 pokemon: pokemon,
             }
         }).then(data=> {
-            setPok(data)
-            // console.log(data)
+            setObjResponse(data)
         })
         
     }
@@ -23,9 +22,9 @@ export function ContainerContext({ children }: { children: ReactNode }) {
     useEffect(() => {
         setData(1)
     }, [])
-    if(!pok) return
+    if(!objResponse) return
     return (
-        <context.Provider value={{ data: pok, setData }}>
+        <context.Provider value={{ data: objResponse, setData }}>
             {children}
         </context.Provider>
     )

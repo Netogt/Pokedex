@@ -1,9 +1,8 @@
 import ItemListPokemon from "./ItemListPokemon";
 import { usePokeContext } from '../../context/pokeContext';
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import { listPokemonType } from "../../context/interfaces";
-import usePokemon from "../../hooks/usePokemon";
+import { listPokemonType} from "../../context/interfaces";
+import usePokemon from "../../hooks/useFetch";
 
 export default function ListPokemons() {
     const { setData } = usePokeContext()
@@ -20,7 +19,9 @@ export default function ListPokemons() {
                 }
             }
         }).then(data => {
-            setList(previous => [...previous, ...data.response])
+            if(data.response != null){
+                setList(previous => [...previous, ...(data.response as any)])
+            }
         })
       
     }
@@ -38,12 +39,11 @@ export default function ListPokemons() {
             observer.observe(spanLoading.current)
         }
 
-
         return () => {
             observer.disconnect()
         }
     }, [list])
-    if (!list) return
+
     return (
         <ul className="listPokemonsAside">
             {list.map(({ name, types, sprites, id }, index) => <ItemListPokemon
