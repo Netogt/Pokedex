@@ -7,13 +7,14 @@ const url: string = "https://pokeapi.co/api/v2/";
 export default function usePokemon():usePokemonReturn {
     const [data, setData] = useState<objResponseType>({} as objResponseType)
 
-    async function getPokemon(pok: usePokemonProps) {
+    async function getPokemon(pok: usePokemonProps): Promise<objResponseType> {
         const allUrl: string[] = getUrl(pok)
         const pokemons: objResponseType = await fetchPokemon(pok.type, allUrl)
         setData(pokemons)
+        return pokemons
     }
   
-    return { pokemonDT: data, setPokemonDT: getPokemon }
+    return {setPokemonDT: getPokemon }
 }
 
 function getUrl({ type, fetch }: usePokemonProps): string[] {

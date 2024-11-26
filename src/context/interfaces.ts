@@ -53,7 +53,7 @@ export interface usePokemonProps {
     }
 }
 export interface usePokemonReturn {
-    pokemonDT: objResponseType,
+    // pokemonDT: objResponseType,
     setPokemonDT: (pok: usePokemonProps) => void
 }
 
