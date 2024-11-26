@@ -61,3 +61,18 @@ export interface contextProps {
     data: objResponseType,
     setData: (pokemon: string) => void
 }
+
+interface namePokTp {
+    name: string
+}
+interface typePokTp {
+    type: namePokTp
+}
+export interface ItemListPokemonProps {
+    imgPoke: string,
+    namePoke: string,
+    typePoke: typePokTp[],
+    idPoke: number,
+    click: () => void
+
+}

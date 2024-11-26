@@ -3,27 +3,15 @@ import TypePokemon from "../main/TypePokemon"
 import { colors } from '../colorPokemon.ts';
 import { useEffect, useState } from "react";
 import { usePokeContext } from "../../context/pokeContext.tsx";
+import { ItemListPokemonProps } from "../../context/interfaces.ts";
 
-interface namePokTp {
-    name: string
-}
-interface typePokTp {
-    type: namePokTp
-}
-interface ItemListPokemonProps {
-    imgPoke: string,
-    namePoke: string,
-    typePoke: typePokTp[],
-    idPoke: number,
-    click: () => void
-
-}
 export default function ItemListPokemon({ imgPoke, namePoke, typePoke, idPoke, click }: ItemListPokemonProps) {
     const [selected, setSelected] = useState(false)
     const {data} = usePokeContext()
     
     useEffect(()=>{
-        if(data.id == idPoke){
+        if(!data.response) return
+        if(data.response[0].id == idPoke){
             setSelected(true)
             return
         }
