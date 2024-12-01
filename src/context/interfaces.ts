@@ -42,7 +42,7 @@ export interface errorRequest {
     message: string
 }
 
-export interface usePokemonProps {
+export interface useFetchProps {
     type: string,
     fetch: {
         pokemon?: string | number,
@@ -52,9 +52,9 @@ export interface usePokemonProps {
         }
     }
 }
-export interface usePokemonReturn {
+export interface useFetchReturn {
     // pokemonDT: objResponseType,
-    setPokemonDT: (pok: usePokemonProps) => Promise<objResponseType>
+    setPokemonDT: (pok: useFetchProps) => Promise<objResponseType>
 }
 
 export interface contextProps {
@@ -73,6 +73,4 @@ export interface ItemListPokemonProps {
     namePoke: string,
     typePoke: typePokTp[],
     idPoke: number,
-    click: () => void
-
 }

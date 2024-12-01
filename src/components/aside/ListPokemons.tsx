@@ -1,13 +1,11 @@
 import ItemListPokemon from "./ItemListPokemon";
-import { usePokeContext } from '../../context/pokeContext';
 import { useEffect, useRef, useState } from "react";
 import { listPokemonType} from "../../context/interfaces";
-import usePokemon from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 export default function ListPokemons() {
-    const { setData } = usePokeContext()
     const [list, setList] = useState<Array<listPokemonType>>([])
-    const { setPokemonDT } = usePokemon()
+    const { setPokemonDT } = useFetch()
 
     function renderPokemons(start: number, end: number) {
         setPokemonDT({
@@ -51,8 +49,7 @@ export default function ListPokemons() {
                 typePoke={types}
                 imgPoke={(sprites as any)['other']['official-artwork']['front_default']}
                 idPoke={id}
-                key={index}
-                click={() => { setData(`${id}`) }} />
+                key={index} />
             )}
             <span ref={spanLoading} className="loader"></span>
         </ul>

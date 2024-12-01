@@ -1,12 +1,13 @@
 import { createContext, useContext, ReactNode, useEffect, useState } from "react";
 import { contextProps, objResponseType } from "./interfaces";
-import usePokemon from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 
 const context = createContext({} as contextProps);
 
 export function ContainerContext({ children }: { children: ReactNode }) {
     const [objResponse, setObjResponse] = useState<objResponseType>()
-    const {setPokemonDT } = usePokemon()
+    const {setPokemonDT } = useFetch()
+    
     function setData(pokemon: string | number): void {
         setPokemonDT({
             type: "pokemon",

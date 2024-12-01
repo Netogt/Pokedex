@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { usePokeContext } from "../../context/pokeContext.tsx";
 import { ItemListPokemonProps } from "../../context/interfaces.ts";
 
-export default function ItemListPokemon({ imgPoke, namePoke, typePoke, idPoke, click }: ItemListPokemonProps) {
+export default function ItemListPokemon({ imgPoke, namePoke, typePoke, idPoke}: ItemListPokemonProps) {
     const [selected, setSelected] = useState(false)
-    const {data} = usePokeContext()
+    const {data, setData} = usePokeContext()
     
     useEffect(()=>{
         if(!data.response) return
@@ -24,7 +24,7 @@ export default function ItemListPokemon({ imgPoke, namePoke, typePoke, idPoke, c
         <li
             className="itemListPokemon"
             style={{backgroundColor: colors[typePoke[0]['type']['name']]}}
-            onClick={click}>
+            onClick={() => {setData(`${idPoke}`)}}>
             <span className="cardSelected" style={ selected ? {display: "block"} : {display: "none"}}></span>
             <div className="secNameType">
                 <p>{namePoke}</p>
