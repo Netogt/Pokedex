@@ -1,6 +1,6 @@
 import PokemonInfo from "./PokemonInfo";
 import { usePokeContext } from '../../context/pokeContext';
-import { pokemonType } from "../../context/interfaces";
+import { pokemonType } from "../../interfaces";
 export default function LeftSection() {
     const {data} = usePokeContext()
     if(data.response == null) return

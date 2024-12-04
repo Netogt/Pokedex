@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useFetchReturn, useFetchProps, ResponseApiType, listPokemonType, pokemonType, objResponseType } from "../context/interfaces"
+import { useFetchReturn, useFetchProps, ResponseApiType, listPokemonType, pokemonType, objResponseType } from "../interfaces"
 
 const url: string = "https://pokeapi.co/api/v2/";
+const maxPokemons: number = 1025
 
 export default function useFetch():useFetchReturn {
     async function getPokemon(pok: useFetchProps): Promise<objResponseType> {
@@ -9,7 +10,6 @@ export default function useFetch():useFetchReturn {
         const pokemons: objResponseType = await fetchPokemon(pok.type, allUrl)
         return pokemons
     }
-  
     return {setPokemonDT: getPokemon }
 }
 
@@ -22,7 +22,7 @@ function getUrl({ type, fetch }: useFetchProps): string[] {
         ]
     } else {
         let start = fetch.listPokemon?.start;
-        let end = fetch.listPokemon?.end;
+        let end = fetch.listPokemon?.end != undefined && fetch.listPokemon?.end > maxPokemons ? maxPokemons + 1 : fetch.listPokemon?.end;
         if (start && end) {
             for (let i = start; i < end; i++) {
                 allRequests.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
@@ -43,7 +43,8 @@ async function fetchPokemon(type: string, requests: string[]): Promise<objRespon
         }
         return {
             response: allResponses,
-            error: null
+            error: null,
+            maxPokemons
         }
     }catch (error: any) {
         return {
@@ -51,10 +52,10 @@ async function fetchPokemon(type: string, requests: string[]): Promise<objRespon
             error: {
                 status: error.status,
                 message: error.message
-            }
+            },
+            maxPokemons
         }
     }
-   
 }
 
 function dataPoke(response: pokemonType[]): pokemonType[] {
@@ -85,6 +86,5 @@ function dataListPoke(response: listPokemonType[]): listPokemonType[] {
             id
         };
     })
-    
     return allResponses
 }

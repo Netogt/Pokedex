@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode, useEffect, useState } from "react";
-import { contextProps, objResponseType } from "./interfaces";
+import { contextProps, objResponseType } from "../interfaces";
 import useFetch from "../hooks/useFetch";
 
 const context = createContext({} as contextProps);

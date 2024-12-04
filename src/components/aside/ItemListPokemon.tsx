@@ -1,9 +1,9 @@
 import LogoPokeball from "../main/LogoPokeball"
 import TypePokemon from "../main/TypePokemon"
-import { colors } from '../colorPokemon.ts';
+import { colors } from '../../colorPokemon.ts';
 import { useEffect, useState } from "react";
 import { usePokeContext } from "../../context/pokeContext.tsx";
-import { ItemListPokemonProps } from "../../context/interfaces.ts";
+import { ItemListPokemonProps } from "../../interfaces.ts";
 
 export default function ItemListPokemon({ imgPoke, namePoke, typePoke, idPoke}: ItemListPokemonProps) {
     const [selected, setSelected] = useState(false)

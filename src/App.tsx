@@ -2,7 +2,7 @@ import Header from './components/header/Header.tsx';
 import ListPokemons from './components/aside/ListPokemons.tsx';
 import MainSection from './components/main/MainSection.tsx';
 import { usePokeContext } from './context/pokeContext.tsx';
-import { colors } from './components/colorPokemon.ts';
+import { colors } from './colorPokemon.ts';
 import RequestError from './components/main/RequestError.tsx';
 
 function App() {

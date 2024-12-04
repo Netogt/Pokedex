@@ -14,7 +14,8 @@ interface stats {
 
 export interface objResponseType{
     response: ResponseApiType | null,
-    error: errorRequest | null
+    error: errorRequest | null,
+    maxPokemons: number
 }
 
 export interface pokemonType {
