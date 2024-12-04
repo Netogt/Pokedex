@@ -1,8 +1,5 @@
-import { act, render, screen, waitFor } from "@testing-library/react"
+import { act, render, screen} from "@testing-library/react"
 import ListPokemons from "../ListPokemons"
-import ItemListPokemon from "../ItemListPokemon"
-import useFetch from "../../../hooks/useFetch"
-
 
 type callBackIBType = (args?: { isIntersecting: boolean }[]) => void
 class IntersectionObserverMock {

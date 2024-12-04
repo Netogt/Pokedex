@@ -1,26 +1,25 @@
 import { usePokeContext } from "../../context/pokeContext"
+import { ButtonPokemonProps } from "../../interfaces";
 
-interface ButtonPokemonProps {
-    svgStyle?: {
-        [key: string]: string,
-    },
-    button: string
-}
 export default function ButtonPokemon({ svgStyle, button }: ButtonPokemonProps) {
     const { data, setData } = usePokeContext()
+
     function changePokemon(btn: string) {
+        if (!data.response) return
+        const newData = data.response[0]
+
         let move: string = '';
         if (btn == 'previous') {
-            if (data.id == 1) {
+            if (newData.id == 1) {
                 move = '1025'
             } else {
-                move = `${data.id - 1}`
+                move = `${newData.id - 1}`
             }
         } else {
-            if (data.id == 1025) {
+            if (newData.id == 1025) {
                 move = '1'
             } else {
-                move = `${data.id + 1}`
+                move = `${newData.id + 1}`
             }
         }
         setData(move)

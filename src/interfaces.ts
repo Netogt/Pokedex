@@ -12,6 +12,13 @@ interface stats {
     base_stat: number
 }
 
+export interface ButtonPokemonProps {
+    svgStyle?: {
+        [key: string]: string,
+    },
+    button: string
+}
+
 export interface objResponseType{
     response: ResponseApiType | null,
     error: errorRequest | null,
