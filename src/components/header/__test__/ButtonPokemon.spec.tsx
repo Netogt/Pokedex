@@ -14,6 +14,10 @@ describe("ButtonPokemon", () => {
             setData: mockSetData
         } as any);
     })
+    
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
 
     it("testing if the left button is rendering", () => {
         render(<ButtonPokemon svgStyle={{ transform: "rotate(180deg)" }} button="previous" />)

@@ -1,5 +1,4 @@
 import Search from './Search.tsx';
-
 import ButtonPokemon from './ButtonPokemon.tsx';
 
 export default function Header() {
