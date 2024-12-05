@@ -37,6 +37,10 @@ jest.mock("../../../hooks/useFetch", () => () => ({
 }))
 
 describe("ListPokemons", () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+    
     it("testing whether ListPokemons is being rendered", async () => {
         await act(async () => { 
             render(<ListPokemons />);
