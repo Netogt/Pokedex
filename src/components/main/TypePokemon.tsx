@@ -1,7 +1,4 @@
-interface TypePokemonProps {
-    type: string
-}
-export default function TypePokemon({ type }: TypePokemonProps) {
+export default function TypePokemon({ type }: { type: string}) {
    
     return (
         <div className="typePoke" >

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import LeftSection from "../LeftSection"
 
-jest.mock("../PokemonInfo", () => ({ infoTitle, infoValue }: { [key: string]: string }) => <div>{infoValue}</div>)
+jest.mock("../PokemonInfo", () => ({ infoValue }: { [key: string]: string }) => <div>{infoValue}</div>)
 jest.mock("../../../context/pokeContext", () => ({
     usePokeContext: jest.fn().mockReturnValue({
         data: {
