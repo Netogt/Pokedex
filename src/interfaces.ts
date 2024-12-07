@@ -19,6 +19,11 @@ export interface ButtonPokemonProps {
     button: string
 }
 
+export interface PokemonInfoProps {
+    infoTitle: string,
+    infoValue: number | string
+}
+
 export interface objResponseType{
     response: ResponseApiType | null,
     error: errorRequest | null,

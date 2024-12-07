@@ -1,7 +1,5 @@
-interface PokemonInfoProps {
-    infoTitle: string,
-    infoValue: number | string
-}
+import { PokemonInfoProps } from "../../interfaces";
+
 export default function PokemonInfo({infoTitle, infoValue}: PokemonInfoProps) {
     return (
         <div className='itemInfo'>
