@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 
 const context = createContext({} as contextProps);
 
-export function ContainerContext({ children }: { children: ReactNode }) {
+export default function ContainerContext({ children }: { children: ReactNode }) {
     const [objResponse, setObjResponse] = useState<objResponseType>()
     const {setPokemonDT } = useFetch()
     
@@ -14,7 +14,7 @@ export function ContainerContext({ children }: { children: ReactNode }) {
             fetch: {
                 pokemon: pokemon,
             }
-        }).then(data=> {
+        }).then(data => {
             setObjResponse(data)
         })
         
@@ -23,6 +23,7 @@ export function ContainerContext({ children }: { children: ReactNode }) {
     useEffect(() => {
         setData(1)
     }, [])
+    
     if(!objResponse) return
     return (
         <context.Provider value={{ data: objResponse, setData }}>
