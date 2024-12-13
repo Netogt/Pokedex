@@ -17,7 +17,7 @@ describe("useFetch", () => {
         }
         const response = await setPokemonDT(objSetPokemonDT, mockGetUrl, mockFetchPokemon)
         expect(response).toEqual({name: "charmander", id: 4})
-        expect(mockGetUrl).toHaveBeenCalledWith(objSetPokemonDT)
+        expect(mockGetUrl).toHaveBeenCalledWith(objSetPokemonDT, "https://pokeapi.co/api/v2/")
         expect(mockFetchPokemon).toHaveBeenCalledWith(objSetPokemonDT.type, ["http://url1", "http://url2"])
     })
 })

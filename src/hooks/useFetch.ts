@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useFetchReturn, useFetchProps, ResponseApiType, listPokemonType, pokemonType, objResponseType } from "../interfaces"
 
-const url: string = "https://pokeapi.co/api/v2/";
+const baseUrl: string = "https://pokeapi.co/api/v2/";
 const maxPokemons: number = 1025
 export default function useFetch(): useFetchReturn {
     async function getPokemon(pok: useFetchProps, callBackGetUrl=getUrl, callBackFetchPokemon=fetchPokemon): Promise<objResponseType> {
-        const allUrl: string[] = callBackGetUrl(pok)
+        const allUrl: string[] = callBackGetUrl(pok, baseUrl)
         const pokemons: objResponseType = await callBackFetchPokemon(pok.type, allUrl)
         return pokemons
     }
     return { setPokemonDT: getPokemon }
 }
 
-export function getUrl({ type, fetch }: useFetchProps): string[] {
+export function getUrl({ type, fetch }: useFetchProps, url: string): string[] {
     let allRequests: string[] = []
     if (type == "pokemon") {
         allRequests = [
@@ -21,10 +21,10 @@ export function getUrl({ type, fetch }: useFetchProps): string[] {
         ]
     } else {
         let start = fetch.listPokemon?.start;
-        let end = fetch.listPokemon?.end != undefined && fetch.listPokemon?.end > maxPokemons ? maxPokemons + 1 : fetch.listPokemon?.end;
+        let end = fetch.listPokemon?.end != undefined && fetch.listPokemon?.end > maxPokemons ? maxPokemons : fetch.listPokemon?.end;
         if (start && end) {
-            for (let i = start; i < end; i++) {
-                allRequests.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
+            for (let i = start; i <= end; i++) {
+                allRequests.push(`${url}pokemon/${i}`)
             }
         }
     }
