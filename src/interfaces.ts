@@ -8,6 +8,20 @@ interface type {
     name: string
 }
 
+export type getUrlType = (props: useFetchProps, url: string) => string[]
+
+export type fetchPokemonType = (
+    type: string,
+    requests: string[],
+    callBackDataPoke: dataPokeType,
+    callBackDataListPoke: dataListPokeType
+) => Promise<objResponseType>
+
+export type dataPokeType = (response: pokemonType[]) => pokemonType[]
+
+export type dataListPokeType = (response: listPokemonType[]) => listPokemonType[]
+
+
 interface stats {
     base_stat: number
 }
@@ -24,7 +38,7 @@ export interface PokemonInfoProps {
     infoValue: number | string
 }
 
-export interface objResponseType{
+export interface objResponseType {
     response: ResponseApiType | null,
     error: errorRequest | null,
     maxPokemons: number
@@ -68,8 +82,8 @@ export interface useFetchProps {
 export interface useFetchReturn {
     // pokemonDT: objResponseType,
     setPokemonDT: (
-        pok: useFetchProps, 
-        callBackGetUrl?: (props: useFetchProps) => string[], 
+        pok: useFetchProps,
+        callBackGetUrl?: (props: useFetchProps) => string[],
         callBackFetchPokemon?: (type: string, requests: string[]) => Promise<objResponseType>
     ) => Promise<objResponseType>
 }
