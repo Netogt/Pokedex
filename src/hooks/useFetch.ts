@@ -3,17 +3,16 @@ import { useFetchReturn, useFetchProps, ResponseApiType, listPokemonType, pokemo
 
 const url: string = "https://pokeapi.co/api/v2/";
 const maxPokemons: number = 1025
-
-export default function useFetch():useFetchReturn {
-    async function getPokemon(pok: useFetchProps): Promise<objResponseType> {
-        const allUrl: string[] = getUrl(pok)
-        const pokemons: objResponseType = await fetchPokemon(pok.type, allUrl)
+export default function useFetch(): useFetchReturn {
+    async function getPokemon(pok: useFetchProps, callBackGetUrl=getUrl, callBackFetchPokemon=fetchPokemon): Promise<objResponseType> {
+        const allUrl: string[] = callBackGetUrl(pok)
+        const pokemons: objResponseType = await callBackFetchPokemon(pok.type, allUrl)
         return pokemons
     }
-    return {setPokemonDT: getPokemon }
+    return { setPokemonDT: getPokemon }
 }
 
-function getUrl({ type, fetch }: useFetchProps): string[] {
+export function getUrl({ type, fetch }: useFetchProps): string[] {
     let allRequests: string[] = []
     if (type == "pokemon") {
         allRequests = [
@@ -32,11 +31,11 @@ function getUrl({ type, fetch }: useFetchProps): string[] {
     return allRequests
 }
 
-async function fetchPokemon(type: string, requests: string[]): Promise<objResponseType> {
+export async function fetchPokemon(type: string, requests: string[]): Promise<objResponseType> {
     try {
         let allResponses: ResponseApiType = []
         const allRequests = await Promise.all(requests.map(request => axios.get(request))) as any[]
-        if (type == "pokemon") { 
+        if (type == "pokemon") {
             allResponses = dataPoke((allRequests.map(res => res.data) as pokemonType[]))
         } else {
             allResponses = dataListPoke((allRequests.map(res => res.data) as listPokemonType[]))
@@ -46,7 +45,7 @@ async function fetchPokemon(type: string, requests: string[]): Promise<objRespon
             error: null,
             maxPokemons
         }
-    }catch (error: any) {
+    } catch (error: any) {
         return {
             response: null,
             error: {
@@ -58,7 +57,7 @@ async function fetchPokemon(type: string, requests: string[]): Promise<objRespon
     }
 }
 
-function dataPoke(response: pokemonType[]): pokemonType[] {
+export function dataPoke(response: pokemonType[]): pokemonType[] {
     const { height, weight, abilities, id, name, sprites, types, stats } = response[0]
     const { shape, generation } = response[1]
 
@@ -76,7 +75,7 @@ function dataPoke(response: pokemonType[]): pokemonType[] {
     }]
 }
 
-function dataListPoke(response: listPokemonType[]): listPokemonType[] {
+export function dataListPoke(response: listPokemonType[]): listPokemonType[] {
     let allResponses: listPokemonType[] = response.map(res => {
         const { id, name, sprites, types } = res
         return {

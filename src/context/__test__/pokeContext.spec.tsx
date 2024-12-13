@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import { usePokeContext } from "../pokeContext"
-import { act, useEffect } from "react"
+import { act } from "react"
 import ContainerContext from "../pokeContext"
 
 const mockSetPokemonDT = jest.fn()

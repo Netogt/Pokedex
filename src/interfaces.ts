@@ -67,9 +67,12 @@ export interface useFetchProps {
 }
 export interface useFetchReturn {
     // pokemonDT: objResponseType,
-    setPokemonDT: (pok: useFetchProps) => Promise<objResponseType>
+    setPokemonDT: (
+        pok: useFetchProps, 
+        callBackGetUrl: (props: useFetchProps) => string[], 
+        callBackFetchPokemon: (type: string, requests: string[]) => Promise<objResponseType>
+    ) => Promise<objResponseType>
 }
-
 export interface contextProps {
     data: objResponseType,
     setData: (pokemon: string) => void
