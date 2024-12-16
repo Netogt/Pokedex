@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import RequestError from "../RequestError"
 
 describe("RequestError", () => {
-    it("testing wether RequestError is being rendered", () => {
+    it("testing whether RequestError is being rendered", () => {
         render(<RequestError />)
         expect(screen.getByText("Ops...")).toBeInTheDocument()
         expect(screen.getByText("não foi possível encontrar")).toBeInTheDocument()

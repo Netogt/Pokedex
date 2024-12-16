@@ -17,7 +17,6 @@ export default function ContainerContext({ children }: { children: ReactNode }) 
         }).then(data => {
             setObjResponse(data)
         })
-        
     }
 
     useEffect(() => {
