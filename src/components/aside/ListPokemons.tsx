@@ -48,7 +48,7 @@ export default function ListPokemons() {
             {list.map(({ name, types, sprites, id }, index) => <ItemListPokemon
                 namePoke={name}
                 typePoke={types}
-                imgPoke={(sprites as any)['other']['official-artwork']['front_default']}
+                imgPoke={sprites}
                 idPoke={id}
                 key={index} />
             )}

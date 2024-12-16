@@ -93,7 +93,7 @@ export const dataListPoke: dataListPokeType = (response) => {
         return {
             name,
             types,
-            sprites,
+            sprites: (sprites as any)['other']['official-artwork']['front_default'],
             id
         };
     })
