@@ -46,11 +46,11 @@ export const getUrl: getUrlType = ({ type, fetch }, url) => {
 export const fetchPokemon: fetchPokemonType = async (type, requests, callBackDataPoke, callBackDataListPoke) => {
     try {
         let allResponses: ResponseApiType = []
-        const allRequests = await Promise.all(requests.map(request => axios.get(request))) as any[]
+        const allRequests = await Promise.all(requests.map(request => axios.get(request)))
         if (type == "pokemon") {
-            allResponses = callBackDataPoke((allRequests.map(res => res.data) as pokemonType[]))
+            allResponses = callBackDataPoke(allRequests.map(res => res.data))
         } else {
-            allResponses = callBackDataListPoke((allRequests.map(res => res.data) as listPokemonType[]))
+            allResponses = callBackDataListPoke(allRequests.map(res => res.data))
         }
         return {
             response: allResponses,
@@ -72,7 +72,6 @@ export const fetchPokemon: fetchPokemonType = async (type, requests, callBackDat
 export const dataPoke: dataPokeType = (response) => {
     const { height, weight, abilities, id, name, sprites, types, stats } = response[0]
     const { shape, generation } = response[1]
-
     return [{
         height,
         weight,
