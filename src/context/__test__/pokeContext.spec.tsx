@@ -40,11 +40,9 @@ describe("pokeContext", () => {
 
         await act(async () => {
             render(
-                <>
-                    <ContainerContext>
-                        <ComponentTest />
-                    </ContainerContext>
-                </>
+                <ContainerContext>
+                    <ComponentTest />
+                </ContainerContext>
             )
         })
     })
@@ -63,6 +61,6 @@ describe("pokeContext", () => {
 
     it("testing whether when setData is executed, a new request is made with the defined value", () => {
         fireEvent.click(screen.getByText("charmander"))
-        expect(mockSetPokemonDT).toHaveBeenCalledWith({fetch: {pokemon: "10"}, type: "pokemon"})
+        expect(mockSetPokemonDT).toHaveBeenCalledWith({ fetch: { pokemon: "10" }, type: "pokemon" })
     })
 })

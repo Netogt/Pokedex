@@ -1,10 +1,21 @@
 import axios from "axios";
-import { useFetchReturn, useFetchProps, ResponseApiType, listPokemonType, pokemonType, objResponseType, getUrlType, fetchPokemonType, dataPokeType, dataListPokeType } from "../interfaces"
+import {
+    useFetchReturn,
+    ResponseApiType,
+    listPokemonType,
+    pokemonType,
+    objResponseType,
+    getUrlType,
+    fetchPokemonType,
+    dataPokeType,
+    dataListPokeType,
+    getPokemonType
+} from "../interfaces"
 
 const baseUrl: string = "https://pokeapi.co/api/v2/";
 const maxPokemons: number = 1025
 export default function useFetch(): useFetchReturn {
-    async function getPokemon(pok: useFetchProps, callBackGetUrl = getUrl, callBackFetchPokemon = fetchPokemon): Promise<objResponseType> {
+    const getPokemon: getPokemonType = async (pok, callBackGetUrl = getUrl, callBackFetchPokemon = fetchPokemon) => {
         const allUrl: string[] = callBackGetUrl(pok, baseUrl)
         const pokemons: objResponseType = await callBackFetchPokemon(pok.type, allUrl, dataPoke, dataListPoke)
         return pokemons

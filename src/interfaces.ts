@@ -21,6 +21,11 @@ export type dataPokeType = (response: pokemonType[]) => pokemonType[]
 
 export type dataListPokeType = (response: listPokemonType[]) => listPokemonType[]
 
+export type getPokemonType = (
+    pok: useFetchProps, 
+    callBackGetUrl?: getUrlType, 
+    callBackFetchPokemon?: fetchPokemonType
+) => Promise<objResponseType>
 
 interface stats {
     base_stat: number
@@ -81,11 +86,7 @@ export interface useFetchProps {
 }
 export interface useFetchReturn {
     // pokemonDT: objResponseType,
-    setPokemonDT: (
-        pok: useFetchProps,
-        callBackGetUrl?: (props: useFetchProps) => string[],
-        callBackFetchPokemon?: (type: string, requests: string[]) => Promise<objResponseType>
-    ) => Promise<objResponseType>
+    setPokemonDT: getPokemonType
 }
 export interface contextProps {
     data: objResponseType,
