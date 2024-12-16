@@ -1,5 +1,5 @@
 # Pokedex
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white) ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
 <p align="center">
   <img style="background-color: white; padding: 20px; box-sizing: border-box" alt="Layout da aplicação" width="100%" src="./public/pokedex.png" />
 </p>
@@ -10,7 +10,7 @@ Uma aplicação que faz requisições a uma API REST [PokéApi](https://pokeapi.
 É possível alterar o pokémon que tem suas informações exibidas a qualquer momento, pelo campo de pesquisa que recebe um nome ou id, pelos botões que exibem o próximo ou anterior, ou se preferir, selecionando um dos pokémons listados.
 
 Esse projeto foi criado utilizando [React](https://pt-br.reactjs.org/),
-[TypeScript](https://www.typescriptlang.org/) e [Axios](https://github.com/axios/axios) para fazer as requisições. Tem como principal intuito exercitar meus conhecimentos em React e TypeScript.
+[TypeScript](https://www.typescriptlang.org/) e [Axios](https://github.com/axios/axios) para fazer as requisições, e testado utilizando [Jest](https://jestjs.io) e [Testing Library](https://testing-library.com). Tem como principal intuito exercitar meus conhecimentos em React e TypeScript.
 
 ## Funcionalidades Principais
 - Buscar um pokémon por meio do nome ou id
@@ -25,6 +25,8 @@ Esse projeto foi criado utilizando [React](https://pt-br.reactjs.org/),
 - Css
 - JavaScript
 - Axios
+- Jest
+- Testing Library
 
 ## Instruções de Instalação
 
